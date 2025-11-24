@@ -1,0 +1,20 @@
+/* src/styles/globals.css */
+@import "tailwindcss";
+
+@theme {
+  /* This automatically creates bg-primary-dark, text-accent, etc. */
+  --color-primary-dark: #414A37;
+  --color-accent: #99744A;
+  --color-surface-light: #DBC2A6;
+  --color-neutral-text: #f4f4f4;
+
+  /* Define the font family */
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Default body styles to ensure the background color applies globally */
+body {
+  background-color: var(--color-primary-dark);
+  color: var(--color-neutral-text);
+  font-family: var(--font-sans);
+}

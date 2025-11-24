@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // FIX: Disable the development indicators (Next.js logo/button) in the corner
-    devIndicators: {
-        buildActivity: false,
-    },
+    devIndicators: false,
     // The rest of your configuration goes here
     reactStrictMode: true,
 };
