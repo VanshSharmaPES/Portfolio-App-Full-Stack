@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Zap, Code2 } from 'lucide-react';
+import { Menu, X, Code2 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
