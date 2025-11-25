@@ -1,52 +1,64 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-// FIXED: Using the import alias with explicit .ts extension
-import dbConnect from '@/lib/mongoose'; 
-// FIXED: Using the import alias with explicit .ts extension
+import nodemailer from 'nodemailer';
+import dbConnect from '@/lib/mongoose';
 import Message from '@/models/Message';
-
-// Type definition for the API response
-type Data = {
-  success: boolean;
-  message?: string;
-  data?: any;
-};
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
-  // Only allow POST requests for form submission
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ success: false, message: `Method ${req.method} Not Allowed` });
   }
 
-  // Connect to the MongoDB database
-  await dbConnect(); 
+  await dbConnect();
 
   const { name, email, message } = req.body;
 
-  // Basic Input Validation
+  // Strict validation: All fields are mandatory
   if (!name || !email || !message) {
-    return res.status(400).json({ success: false, message: 'Missing required fields: name, email, or message.' });
+    return res.status(400).json({ success: false, message: 'All fields are mandatory.' });
   }
 
   try {
-    // Create a new message document using the Mongoose model
+    // 1. Save to MongoDB
     const newMessage = await Message.create({ name, email, message });
 
-    // Success response
-    return res.status(201).json({ success: true, message: 'Message sent and saved successfully!', data: newMessage });
+    // 2. Send Email Notification
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+        const transporter = nodemailer.createTransport({
+        service: 'gmail', 
+        auth: {
+            user: process.env.EMAIL_USER, 
+            pass: process.env.EMAIL_PASS, 
+        },
+        });
+
+        const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER, // Send to yourself
+        subject: `New Portfolio Contact from ${name}`,
+        text: `
+            Name: ${name}
+            Email: ${email}
+            Message: ${message}
+        `,
+        };
+
+        try {
+            await transporter.sendMail(mailOptions);
+            console.log('Email notification sent successfully.');
+        } catch (emailError) {
+            console.error('Failed to send email notification:', emailError);
+            // We do NOT fail the response here, as the DB save was successful.
+        }
+    }
+
+    return res.status(201).json({ success: true, message: 'Message sent successfully!', data: newMessage });
 
   } catch (error: any) {
-    // Detailed error handling
     console.error('API Error:', error.message);
-    let errorMessage = 'An unexpected error occurred.';
-    
-    if (error.name === 'ValidationError') {
-        errorMessage = 'Validation failed: ' + Object.values(error.errors).map((err: any) => err.message).join(', ');
-    }
-    
-    return res.status(500).json({ success: false, message: errorMessage });
+    return res.status(500).json({ success: false, message: 'Server error occurred.' });
   }
 }
