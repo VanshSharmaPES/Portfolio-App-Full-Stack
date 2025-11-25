@@ -9,7 +9,7 @@ export default function Projects() {
       <Head><title>Projects | {PORTFOLIO_DATA.name}</title></Head>
       <section className="min-h-screen pt-10 px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-extrabold mb-10 border-b-4 border-accent pb-2 inline-block">My Projects</h2>
+          <h2 className="text-4xl font-medium mb-10 border-b-4 border-accent pb-2 inline-block">My Projects</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {PORTFOLIO_DATA.projects.map(project => (

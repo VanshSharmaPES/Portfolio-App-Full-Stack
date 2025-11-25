@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, Code2 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "/" },
+    { name: "Home", href: "/home" }, // CHANGED: Points to /home now
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
     { name: "Contact", href: "/contact" },
@@ -18,9 +18,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-primary-dark/95 shadow-lg backdrop-blur-sm border-b border-accent/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-accent no-underline">
-              <Zap className="w-6 h-6" />
-              <span>{PORTFOLIO_DATA.name.split(' ')[0]}'s DevFolio</span>
+            
+            <Link href="/home" className="flex items-center space-x-2 text-2xl font-bold text-accent no-underline hover:text-surface-light transition-colors">
+              <Code2 className="w-8 h-8" />
+              <span>Vansh's Space</span>
             </Link>
 
             <nav className="hidden md:block">

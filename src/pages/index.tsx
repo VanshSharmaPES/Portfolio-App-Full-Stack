@@ -1,84 +1,72 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Briefcase, User, Download, Code2, Database, Server, Globe } from 'lucide-react';
-import Layout from '../components/Layout';
+import { motion } from 'framer-motion';
+import { Code2, ArrowRight } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
-const HomePage: React.FC = () => {
+export default function LandingPage() {
   return (
-    <Layout>
+    <div className="min-h-screen bg-primary-dark flex flex-col items-center justify-center text-neutral-text relative overflow-hidden">
       <Head>
-        <title>{PORTFOLIO_DATA.name} | Home</title>
+        <title>Welcome | {PORTFOLIO_DATA.name}</title>
       </Head>
-      
-      <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text">
-        <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between mb-16">
-          <div className="max-w-lg mb-10 md:mb-0">
-            <p className="text-xl text-accent font-semibold mb-2">Hello, I'm</p>
-            <h1 className="text-6xl sm:text-7xl font-extrabold text-neutral-text leading-tight">
-              {PORTFOLIO_DATA.name}
-            </h1>
-            <h2 className="text-3xl sm:text-4xl text-surface-light font-light mt-2 mb-6">
-              {PORTFOLIO_DATA.title}
-            </h2>
-            <p className="text-lg text-surface-light/80 mb-8">
-              {PORTFOLIO_DATA.tagline}
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <Link 
-                href="/projects"
-                className="group inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-primary-dark bg-accent hover:bg-accent/80 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 active:scale-95 no-underline"
-              >
-                View My Work
-                <Briefcase className="ml-2 w-5 h-5 group-hover:animate-bounce" />
-              </Link>
 
-              <a 
-                href="/resume.pdf" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center px-6 py-3 border-2 border-accent text-base font-medium rounded-full text-accent hover:bg-accent hover:text-primary-dark transition-all duration-300 transform hover:scale-105 active:scale-95 no-underline"
-              >
-                Download CV
-                <Download className="ml-2 w-5 h-5" />
-              </a>
-            </div>
-          </div>
-          
-          <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-accent flex items-center justify-center bg-surface-light shrink-0 animate-pulse-slow">
-            <User className="w-24 h-24 text-primary-dark" />
-          </div>
-        </div>
+      {/* Decorative Background Elements */}
+      <div className="absolute  center top-[-10%] left-[-10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-surface-light/10 rounded-full blur-3xl" />
 
-        <div className="max-w-7xl w-full mx-auto border-t border-accent/20 pt-12 pb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="p-4">
-              <div className="flex justify-center text-accent mb-2"><Code2 size={32} /></div>
-              <h3 className="text-3xl font-bold text-neutral-text">5+</h3>
-              <p className="text-surface-light/70 text-sm">Years Experience</p>
-            </div>
-            <div className="p-4">
-              <div className="flex justify-center text-accent mb-2"><Globe size={32} /></div>
-              <h3 className="text-3xl font-bold text-neutral-text">10+</h3>
-              <p className="text-surface-light/70 text-sm">Web Projects</p>
-            </div>
-            <div className="p-4">
-              <div className="flex justify-center text-accent mb-2"><Server size={32} /></div>
-              <h3 className="text-3xl font-bold text-neutral-text">100%</h3>
-              <p className="text-surface-light/70 text-sm">Backend Uptime</p>
-            </div>
-            <div className="p-4">
-              <div className="flex justify-center text-accent mb-2"><Database size={32} /></div>
-              <h3 className="text-3xl font-bold text-neutral-text">MERN</h3>
-              <p className="text-surface-light/70 text-sm">Specialist</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </Layout>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="z-10 text-center px-4"
+      >
+        {/* Logo Icon */}
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="flex justify-center mb-6 text-accent"
+        >
+          <Code2 size={80} strokeWidth={1.5} />
+        </motion.div>
+
+        {/* Name */}
+        <motion.h1
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="text-5xl md:text-7xl font-medium mb-4 tracking-tight center"
+        >
+          {PORTFOLIO_DATA.name}
+        </motion.h1>
+
+        {/* Tagline */}
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="text-xl md:text-2xl center text-surface-light/80 font-light mb-12 max-w-2xl mx-auto"
+        >
+          {PORTFOLIO_DATA.tagline}
+        </motion.p>
+
+        {/* Enter Button */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <Link
+            href="/home"
+            className="group inline-flex items-center px-8 py-4 border-2 border-accent text-lg font-medium rounded-full text-accent hover:bg-accent hover:text-primary-dark transition-all duration-300 transform hover:scale-105 active:scale-95"
+          >
+            Enter Portfolio
+            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
   );
-};
-
-export default HomePage;
+}

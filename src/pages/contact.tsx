@@ -52,7 +52,7 @@ export default function Contact() {
       <Head><title>Contact | {PORTFOLIO_DATA.name}</title></Head>
       <section className="min-h-screen pt-10 px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-extrabold mb-10 border-b-4 border-accent pb-2 inline-block">Get In Touch</h2>
+          <h2 className="text-4xl font-medium mb-10 border-b-4 border-accent pb-2 inline-block">Get In Touch</h2>
           
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="bg-surface-light p-8 rounded-xl shadow-2xl text-primary-dark">

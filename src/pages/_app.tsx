@@ -1,5 +1,6 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -15,6 +16,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <main className={inter.variable}>
+      <Head>
+  {/* We added '?v=2' to the end of the href */}
+  <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vansh Sharma | Portfolio</title>
+</Head>
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={router.pathname}
