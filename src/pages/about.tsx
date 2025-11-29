@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Code } from 'lucide-react';
 import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { motion } from 'framer-motion';
 
 export default function About() {
   return (
@@ -13,17 +14,26 @@ export default function About() {
           <h2 className="text-4xl font-medium mb-10 border-b-4 border-accent pb-2 inline-block">About Me</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <div className="lg:col-span-2 space-y-6">
-              {/* CHANGE HERE: Added 'text-justify' and removed 'whitespace-pre-line' */}
-              <p className="text-lg text-surface-light leading-relaxed text-justify"> 
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="lg:col-span-2 space-y-6"
+            >
+              <p className="text-lg text-neutral-text/90 leading-relaxed text-justify">
                 {PORTFOLIO_DATA.about}
               </p>
-              <p className="text-lg font-semibold text-neutral-text">
+              <p className="text-lg font-semibold text-accent">
                 I am always open to new opportunities and collaborations. Let's build something great together.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="lg:col-span-1 p-6 bg-surface-light rounded-xl shadow-inner text-primary-dark">
+            {/* CHANGED: text-primary-dark -> text-neutral-text */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-1 p-6 bg-surface-light rounded-xl shadow-inner text-neutral-text border border-accent/10"
+            >
               <h3 className="text-2xl font-semibold text-accent mb-4">Core Skills</h3>
               <ul className="space-y-3">
                 {PORTFOLIO_DATA.skills.map(skill => (
@@ -33,7 +43,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

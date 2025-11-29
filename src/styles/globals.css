@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- Custom Colors --- */
-  --color-primary-dark: #414A37;
-  --color-accent: #99744A;
-  --color-surface-light: #DBC2A6;
-  --color-neutral-text: #f4f4f4;
+  /* --- Option C: Cyber Dev --- */
+  --color-primary-dark: #170F25;  /* Deep Purple/Black */
+  --color-accent: #4ade80;        /* Green 400 (Neon Green) */
+  --color-surface-light: #2E2344; /* Muted Purple */
+  --color-neutral-text: #f3f4f6;  /* Cool Gray */
 
   /* --- Typography Setup --- */
-  /* We add var(--font-inter) to the start of the sans stack */
   --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 

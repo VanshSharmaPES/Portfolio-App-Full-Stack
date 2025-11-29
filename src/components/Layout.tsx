@@ -7,7 +7,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "/home" }, // CHANGED: Points to /home now
+    { name: "Home", href: "/home" },
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
     { name: "Contact", href: "/contact" },
@@ -19,7 +19,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             
-            <Link href="/home" className="flex items-center space-x-2 text-2xl font-bold text-accent no-underline hover:text-surface-light transition-colors">
+            <Link href="/home" className="flex items-center space-x-2 text-2xl font-bold text-accent no-underline hover:text-neutral-text transition-colors">
               <Code2 className="w-8 h-8" />
               <span>Vansh's Space</span>
             </Link>
@@ -53,7 +53,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <Link 
                     href={href} 
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 text-base font-medium text-neutral-text hover:bg-surface-light/20 hover:text-accent rounded-lg no-underline"
+                    className="block px-3 py-2 text-base font-medium text-neutral-text hover:bg-white/5 hover:text-accent rounded-lg no-underline"
                   >
                     {name}
                   </Link>
@@ -64,14 +64,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         )}
       </header>
 
-      <main className="grow pt-16">
+      {/* Added mb-12 to main to ensure content doesn't touch footer on small screens */}
+      <main className="grow pt-16 mb-12">
         {children}
       </main>
 
-      <footer className="bg-primary-dark border-t border-accent/50 py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center text-sm text-surface-light/70">
+      {/* FIXED: Updated text color to text-neutral-text/60 and increased padding (py-8) */}
+      <footer className="bg-primary-dark border-t border-accent/20 py-8 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center text-sm text-neutral-text/60">
           <p>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved.</p>
-          <p>Built with Next.js, TypeScript, and Tailwind CSS.</p>
+          <p className="mt-2">Built with Next.js, TypeScript, and Tailwind CSS.</p>
         </div>
       </footer>
     </div>

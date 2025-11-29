@@ -13,7 +13,7 @@ export default function LandingPage() {
       </Head>
 
       {/* Decorative Background Elements */}
-      <div className="absolute  center top-[-10%] left-[-10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute center top-[-10%] left-[-10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-surface-light/10 rounded-full blur-3xl" />
 
       <motion.div
@@ -42,12 +42,12 @@ export default function LandingPage() {
           {PORTFOLIO_DATA.name}
         </motion.h1>
 
-        {/* Tagline */}
+        {/* Tagline - FIXED: Changed text-surface-light/80 to text-neutral-text/80 */}
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="text-xl md:text-2xl center text-surface-light/80 font-light mb-12 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl center text-neutral-text/80 font-light mb-12 max-w-2xl mx-auto"
         >
           {PORTFOLIO_DATA.tagline}
         </motion.p>
@@ -60,7 +60,7 @@ export default function LandingPage() {
         >
           <Link
             href="/home"
-            className="group inline-flex items-center px-8 py-4 border-2 border-accent text-lg font-medium rounded-full text-accent hover:bg-accent hover:text-primary-dark transition-all duration-300 transform hover:scale-105 active:scale-95"
+            className="group inline-flex items-center px-8 py-4 border-2 border-accent text-lg font-medium rounded-full text-accent hover:bg-accent hover:text-primary-dark transition-all duration-300 transform hover:scale-105 active:scale-95 no-underline"
           >
             Enter Portfolio
             <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />

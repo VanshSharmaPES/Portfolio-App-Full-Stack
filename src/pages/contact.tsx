@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Send, Github, Linkedin } from 'lucide-react';
 import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { motion } from 'framer-motion';
 
 interface FormData {
   name: string;
@@ -55,10 +56,15 @@ export default function Contact() {
           <h2 className="text-4xl font-medium mb-10 border-b-4 border-accent pb-2 inline-block">Get In Touch</h2>
           
           <div className="max-w-3xl mx-auto space-y-8">
-            <div className="bg-surface-light p-8 rounded-xl shadow-2xl text-primary-dark">
+            {/* CHANGED: text-primary-dark -> text-neutral-text */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-surface-light p-8 rounded-xl shadow-2xl text-neutral-text border border-accent/10"
+            >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">Name *</label>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1 text-accent">Name *</label>
                   <input
                     type="text"
                     name="name"
@@ -67,12 +73,12 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="Your Name"
-                    // Lighter beige background color hardcoded for better contrast
-                    className="w-full px-4 py-2 border border-primary-dark/30 rounded-lg shadow-sm focus:ring-accent focus:border-accent bg-[#E8DCCA] placeholder-primary-dark/50"
+                    // CHANGED: Dark inputs for Cyber theme
+                    className="w-full px-4 py-2 border border-primary-dark rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-transparent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">Email *</label>
+                  <label htmlFor="email" className="block text-sm font-medium mb-1 text-accent">Email *</label>
                   <input
                     type="email"
                     name="email"
@@ -81,11 +87,11 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="your.email@example.com"
-                    className="w-full px-4 py-2 border border-primary-dark/30 rounded-lg shadow-sm focus:ring-accent focus:border-accent bg-[#E8DCCA] placeholder-primary-dark/50"
+                    className="w-full px-4 py-2 border border-primary-dark rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-transparent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1">Message *</label>
+                  <label htmlFor="message" className="block text-sm font-medium mb-1 text-accent">Message *</label>
                   <textarea
                     name="message"
                     id="message"
@@ -94,14 +100,14 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="How can I help you?"
-                    className="w-full px-4 py-2 border border-primary-dark/30 rounded-lg shadow-sm focus:ring-accent focus:border-accent bg-[#E8DCCA] placeholder-primary-dark/50"
+                    className="w-full px-4 py-2 border border-primary-dark rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-transparent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-md text-surface-light bg-primary-dark hover:bg-primary-dark/90 disabled:bg-primary-dark/50 transition duration-300 transform hover:scale-[1.01]"
+                  className="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-md text-primary-dark bg-accent hover:bg-accent/80 disabled:opacity-50 transition duration-300 transform hover:scale-[1.01]"
                 >
                   {status === 'loading' ? (
                     <span className="animate-pulse">Sending...</span>
@@ -113,18 +119,18 @@ export default function Contact() {
 
               {message && (
                 <div className={`mt-4 p-3 rounded-lg text-sm text-center font-medium ${
-                  status === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  status === 'success' ? 'bg-green-900/30 text-green-300 border border-green-500/30' : 'bg-red-900/30 text-red-300 border border-red-500/30'
                 }`}>
                   {message}
                 </div>
               )}
-            </div>
+            </motion.div>
 
             <div className="flex justify-center space-x-6 pt-4">
-              <a href={`https://github.com/${PORTFOLIO_DATA.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-surface-light hover:text-accent transition duration-300">
+              <a href={`https://github.com/${PORTFOLIO_DATA.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-neutral-text hover:text-accent transition duration-300 transform hover:scale-110">
                 <Github className="w-8 h-8" />
               </a>
-              <a href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-surface-light hover:text-accent transition duration-300">
+              <a href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-neutral-text hover:text-accent transition duration-300 transform hover:scale-110">
                 <Linkedin className="w-8 h-8" />
               </a>
             </div>
