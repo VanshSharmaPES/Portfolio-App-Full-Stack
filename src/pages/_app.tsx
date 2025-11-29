@@ -12,27 +12,23 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const pageVariants = {
+// The "Orchestrator" variants
+const containerVariants = {
   initial: {
     opacity: 0,
-    scale: 0.95,
-    y: 10,
   },
   enter: {
     opacity: 1,
-    scale: 1,
-    y: 0,
     transition: {
-      duration: 0.4,
-      ease: [0.25, 0.1, 0.25, 1],
+      // This causes the children to animate one after another
+      staggerChildren: 0.15, 
+      delayChildren: 0.1,
     },
   },
   exit: {
     opacity: 0,
-    scale: 1.05,
     transition: {
       duration: 0.2,
-      ease: "easeIn",
     },
   },
 };
@@ -65,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AnimatePresence mode="wait">
         <motion.div
           key={router.pathname}
-          variants={pageVariants}
+          variants={containerVariants}
           initial="initial"
           animate="enter"
           exit="exit"
