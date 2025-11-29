@@ -8,6 +8,7 @@ export const PORTFOLIO_DATA = {
     { id: 1, title: "Hospital Queue Management System", description: "Developed a comprehensive queue management system for hospitals to handle patient flow based on priority (Severe, Moderate, Normal).", technologies: ["Data Structures in C"], link: "https://github.com/VanshSharmaPES/Hospital-Queue-Management-System" },
     { id: 2, title: "Weather Forecast App", description: "Built a real-time weather application that displays live weather data and humidity levels for any given location or city.", technologies: ["Python (used external API)"], link: "https://github.com/VanshSharmaPES/Weather-Forecast" },
     { id: 3, title: "NovaLearn", description: "This project is a robust full-stack web application developed as part of the Web Technology curriculum. It is designed to facilitate online learning with a focus on modular architecture and type safety.", technologies: ["TypeScript", "ReactJS", "MongoDB", "NodeJS", "ExpressJS", "CSS"], link: "https://github.com/VanshSharmaPES/Web_Technology_Project" },
+    {id: 4, title: "Personal Portfolio", description: "A high-performance, responsive portfolio website built to showcase my projects and skills. Features smooth page transitions, strict type safety, and a modern dark-themed UI.", technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"], link: "https://github.com/VanshSharmaPES/portfolio-app-full-stack"},
   ],
   contact: {
     email: "vanshsharma2006asr@gmail.com",
