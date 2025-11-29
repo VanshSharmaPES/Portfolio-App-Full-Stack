@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
-// Bypass React 19 type conflict
+// --- TYPE FIX ---
 const MotionDiv = motion.div as any;
 
 const itemVariants = {

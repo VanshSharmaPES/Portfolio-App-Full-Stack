@@ -12,7 +12,8 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-// Bypass React 19 type conflict
+// --- TYPE FIX ---
+// We cast motion.div to 'any' to bypass the React 19 className conflict.
 const MotionDiv = motion.div as any;
 
 const containerVariants = {
@@ -60,6 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       
       <AnimatePresence mode="wait">
+        {/* Usng MotionDiv instead of motion.div to avoid type error */}
         <MotionDiv
           key={router.pathname}
           variants={containerVariants}
