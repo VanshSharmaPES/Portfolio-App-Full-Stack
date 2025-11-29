@@ -5,6 +5,9 @@ import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
+// --- TYPE FIX ---
+const MotionDiv = motion.div as any;
+
 export default function About() {
   return (
     <Layout>
@@ -14,7 +17,7 @@ export default function About() {
           <h2 className="text-4xl font-medium mb-10 border-b-4 border-accent pb-2 inline-block">About Me</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <motion.div 
+            <MotionDiv 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="lg:col-span-2 space-y-6"
@@ -25,10 +28,9 @@ export default function About() {
               <p className="text-lg font-semibold text-accent">
                 I am always open to new opportunities and collaborations. Let's build something great together.
               </p>
-            </motion.div>
+            </MotionDiv>
             
-            {/* CHANGED: text-primary-dark -> text-neutral-text */}
-            <motion.div 
+            <MotionDiv 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -43,7 +45,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </section>

@@ -2,7 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { motion } from 'framer-motion'; // Using motion for that "cool" feel
+import { motion } from 'framer-motion';
+
+// --- TYPE FIX ---
+const MotionDiv = motion.div as any;
 
 export default function Projects() {
   return (
@@ -14,24 +17,21 @@ export default function Projects() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {PORTFOLIO_DATA.projects.map((project, index) => (
-              <motion.div 
+              <MotionDiv 
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                // CHANGED: text-primary-dark -> text-neutral-text
                 className="bg-surface-light rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden group text-neutral-text flex flex-col border border-accent/10 hover:border-accent/30"
               >
                 <div className="p-6 flex flex-col h-full">
                   <h3 className="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
-                  {/* CHANGED: text-primary-dark/80 -> text-neutral-text/80 */}
                   <p className="text-neutral-text/80 mb-4 grow">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map(tech => (
-                      // CHANGED: text-surface-light -> text-accent (better contrast on dark tag)
                       <span key={tech} className="px-3 py-1 text-xs font-semibold rounded-full bg-primary-dark text-accent border border-accent/20">
                         {tech}
                       </span>
@@ -49,7 +49,7 @@ export default function Projects() {
                     </svg>
                   </a>
                 </div>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>

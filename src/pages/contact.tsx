@@ -5,6 +5,9 @@ import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
+// --- TYPE FIX ---
+const MotionDiv = motion.div as any;
+
 interface FormData {
   name: string;
   email: string;
@@ -56,8 +59,7 @@ export default function Contact() {
           <h2 className="text-4xl font-medium mb-10 border-b-4 border-accent pb-2 inline-block">Get In Touch</h2>
           
           <div className="max-w-3xl mx-auto space-y-8">
-            {/* CHANGED: text-primary-dark -> text-neutral-text */}
-            <motion.div 
+            <MotionDiv 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-surface-light p-8 rounded-xl shadow-2xl text-neutral-text border border-accent/10"
@@ -73,7 +75,6 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="Your Name"
-                    // CHANGED: Dark inputs for Cyber theme
                     className="w-full px-4 py-2 border border-primary-dark rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-transparent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30"
                   />
                 </div>
@@ -124,7 +125,7 @@ export default function Contact() {
                   {message}
                 </div>
               )}
-            </motion.div>
+            </MotionDiv>
 
             <div className="flex justify-center space-x-6 pt-4">
               <a href={`https://github.com/${PORTFOLIO_DATA.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-neutral-text hover:text-accent transition duration-300 transform hover:scale-110">
