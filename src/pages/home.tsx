@@ -11,6 +11,7 @@ const HomePage: React.FC = () => {
     <Layout>
       <Head>
         <title>{PORTFOLIO_DATA.name} | Home</title>
+        <meta name="description" content={PORTFOLIO_DATA.tagline} />
       </Head>
       
       <section className="min-h-[110vh] flex flex-col justify-center px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text">
@@ -51,10 +52,12 @@ const HomePage: React.FC = () => {
           {/* IMAGE WITH HOVER EFFECT */}
           <div className="w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-accent flex items-center justify-center bg-surface-light shrink-0 relative group hover:scale-105 transition-transform duration-300 hover:border-accent/80">
             <Image 
-              src="/image.jpg" // Make sure this matches your file name in the public folder!
+              src="/image.jpg" 
               alt="Vansh Sharma"
               width={256}
               height={256}
+              // PERFORMANCE FIX: Added sizes prop to assist browser in resource selection
+              sizes="(max-width: 768px) 100vw, 256px"
               className="object-cover w-full h-full"
               priority
             />
