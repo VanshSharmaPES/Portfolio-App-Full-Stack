@@ -2,7 +2,7 @@ export const PORTFOLIO_DATA = {
   name: "Vansh Sharma",
   title: "Full Stack Developer (MERN + Next.js)",
   tagline: "Building scalable, type-safe, and highly responsive web applications.",
-  about: "This field is empty right now.",
+  about: "Hello! I’m Vansh Sharma, a Full Stack Developer currently pursuing my B.Tech in Computer Science (AI/ML) at PES University. My journey in tech is driven by a desire to solve real-world problems through code. I have developed robust applications like NovaLearn, a full-stack educational platform, and a Hospital Queue Management System to optimize patient flow. My technical toolkit includes React, Next.js, Node.js, and MongoDB, supported by a strong foundation in C and Python. I believe in the power of community and collaboration. I actively contribute as a Technical Member for the AIML domain at Nexus (AWS Champ Club) and handle operations for the Microsoft Learn Student Ambassadors at PESU. My role as a Junior Manager at AIESEC has further sharpened my leadership and organizational skills, allowing me to bridge the gap between technical execution and operational success.",
   skills: ["C", "Python", "React", "TypeScript", "Tailwind CSS", "Next.js", "Node.js", "Express.js", "MongoDB", "Git"],
   projects: [
     { id: 1, title: "Hospital Queue Management System", description: "Developed a comprehensive queue management system for hospitals to handle patient flow based on priority (Severe, Moderate, Normal).", technologies: ["Data Structures in C"], link: "https://github.com/VanshSharmaPES/Hospital-Queue-Management-System" },
