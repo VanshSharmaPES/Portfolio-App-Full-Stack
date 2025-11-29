@@ -7,7 +7,9 @@ import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
-// The "Child" variant - simple fade up
+// Bypass React 19 type conflict
+const MotionDiv = motion.div as any;
+
 const itemVariants = {
   initial: { opacity: 0, y: 30 },
   enter: { 
@@ -28,8 +30,8 @@ const HomePage: React.FC = () => {
       <section className="min-h-[110vh] flex flex-col justify-center px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text">
         <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between mb-16">
           
-          {/* Left Text Content - Stagger Item 1 */}
-          <motion.div 
+          {/* Left Text Content */}
+          <MotionDiv 
             variants={itemVariants}
             className="max-w-lg mb-10 md:mb-2"
           >
@@ -63,10 +65,10 @@ const HomePage: React.FC = () => {
                 <Download className="ml-2 w-5 h-5" />
               </a>
             </div>
-          </motion.div>
+          </MotionDiv>
           
-          {/* Right Image - Stagger Item 2 */}
-          <motion.div 
+          {/* Right Image */}
+          <MotionDiv 
             variants={itemVariants}
             className="w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-accent flex items-center justify-center bg-surface-light shrink-0 relative group hover:scale-105 transition-transform duration-300 hover:border-accent/80"
           >
@@ -79,11 +81,11 @@ const HomePage: React.FC = () => {
               className="object-cover w-full h-full"
               priority
             />
-          </motion.div>
+          </MotionDiv>
         </div>
 
-        {/* Bottom Stats - Stagger Item 3 */}
-        <motion.div 
+        {/* Bottom Stats */}
+        <MotionDiv 
           variants={itemVariants}
           className="max-w-7xl w-full mx-auto border-t border-accent/20 pt-12 pb-12"
         >
@@ -109,7 +111,7 @@ const HomePage: React.FC = () => {
               <p className="text-neutral-text/60 text-sm">Specialist</p>
             </div>
           </div>
-        </motion.div>
+        </MotionDiv>
       </section>
     </Layout>
   );

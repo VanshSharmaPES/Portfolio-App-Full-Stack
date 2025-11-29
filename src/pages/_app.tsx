@@ -12,7 +12,9 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-// The "Orchestrator" variants
+// Bypass React 19 type conflict
+const MotionDiv = motion.div as any;
+
 const containerVariants = {
   initial: {
     opacity: 0,
@@ -20,7 +22,6 @@ const containerVariants = {
   enter: {
     opacity: 1,
     transition: {
-      // This causes the children to animate one after another
       staggerChildren: 0.15, 
       delayChildren: 0.1,
     },
@@ -59,7 +60,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       
       <AnimatePresence mode="wait">
-        <motion.div
+        <MotionDiv
           key={router.pathname}
           variants={containerVariants}
           initial="initial"
@@ -68,7 +69,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           className="w-full min-h-screen"
         >
           <Component {...pageProps} />
-        </motion.div>
+        </MotionDiv>
       </AnimatePresence>
     </main>
   );
