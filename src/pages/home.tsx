@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
               </Link>
 
               <a 
-                href="Vansh_Sharma_CV.pdf" 
+                href="Vansh_Sharma_Resume.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center px-6 py-3 border-2 border-accent text-base font-medium rounded-full text-accent hover:bg-accent/10 hover:text-accent transition-all duration-300 transform hover:scale-105 active:scale-95 no-underline"
