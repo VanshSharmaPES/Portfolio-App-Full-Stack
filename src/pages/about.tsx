@@ -26,7 +26,7 @@ export default function About() {
                 {PORTFOLIO_DATA.about}
               </p>
               <p className="text-lg font-semibold text-accent">
-                I am always open to new opportunities and collaborations. Let's build something great together.
+                I am always open to new opportunities and collaborations. Let's build something great together!
               </p>
             </MotionDiv>
             
