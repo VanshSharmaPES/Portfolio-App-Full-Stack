@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X, Code2, Sparkles } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -15,21 +15,32 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-primary-dark font-sans antialiased transition-colors duration-500 flex flex-col text-neutral-text">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-primary-dark/95 shadow-lg backdrop-blur-sm border-b border-accent/30">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-primary-dark/95 shadow-lg backdrop-blur-xl border-b border-accent/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             
-            <Link href="/home" className="flex items-center space-x-2 text-2xl font-bold text-accent no-underline hover:text-neutral-text transition-colors">
-              <Code2 className="w-8 h-8" />
-              <span>Vansh's Space</span>
+            <Link href="/home" className="group flex items-center space-x-2 text-2xl font-bold text-accent no-underline hover:text-neutral-text transition-colors">
+              <div className="relative">
+                {/* Continuous pulsing glow */}
+                <div className="absolute inset-0 bg-accent/20 blur-lg rounded-full animate-pulse"></div>
+                {/* Extra glow on hover */}
+                <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/30 blur-lg rounded-full transition-all duration-300"></div>
+                <Code2 className="w-8 h-8 relative group-hover:rotate-12 transition-transform duration-300 animate-pulse" />
+              </div>
+              <span className="relative bg-gradient-to-r from-accent via-accent/80 to-accent bg-clip-text text-transparent group-hover:from-accent/90 group-hover:to-accent transition-all">
+                Vansh's Space
+                {/* Sparkle effect */}
+                <Sparkles className="absolute -top-1 -right-6 w-4 h-4 text-accent/60 animate-pulse" />
+              </span>
             </Link>
 
             <nav className="hidden md:block">
               <ul className="flex space-x-6 m-0 p-0 list-none">
                 {navLinks.map(({ name, href }) => (
                   <li key={name}>
-                    <Link href={href} className="text-lg font-medium text-neutral-text hover:text-accent transition duration-300 no-underline">
+                    <Link href={href} className="relative text-lg font-medium text-neutral-text hover:text-accent transition duration-300 no-underline group">
                       {name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
                     </Link>
                   </li>
                 ))}
@@ -69,11 +80,21 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         {children}
       </main>
 
-      {/* FIXED: Updated text color to text-neutral-text/60 and increased padding (py-8) */}
-      <footer className="bg-primary-dark border-t border-accent/20 py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center text-sm text-neutral-text/60">
-          <p>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved.</p>
-          <p className="mt-2">Built with Next.js, TypeScript, and Tailwind CSS.</p>
+      {/* Enhanced Footer */}
+      <footer className="bg-primary-dark border-t border-accent/20 py-10 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
+          <div className="flex flex-col items-center gap-4">
+            {/* Icon and text */}
+            <div className="flex items-center gap-2 text-accent/60">
+              <Code2 className="w-5 h-5" />
+              <span className="text-sm">Built with Next.js & TypeScript</span>
+            </div>
+            
+            {/* Copyright */}
+            <p className="text-sm text-neutral-text/60 text-center">
+              &copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

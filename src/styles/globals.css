@@ -17,3 +17,17 @@ body {
   color: var(--color-neutral-text);
   font-family: var(--font-sans);
 }
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
