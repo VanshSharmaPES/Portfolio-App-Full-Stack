@@ -2,6 +2,8 @@
 
 A modern, animated portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features stunning visual effects, smooth animations, and a responsive design that works perfectly on all devices.
 
+**🌐 Live Website**: [vanshsharma-portfolio.vercel.app](https://vanshsharma-portfolio.vercel.app)
+
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
 ![Next.js](https://img.shields.io/badge/Next.js-16.0.7-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
@@ -89,6 +91,8 @@ A modern, animated portfolio website built with Next.js, TypeScript, and Tailwin
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
+   Or visit the live website: **[vanshsharma-portfolio.vercel.app](https://vanshsharma-portfolio.vercel.app)**
+
 ### Build for Production
 
 ```bash
@@ -172,6 +176,9 @@ Customize animations in `src/styles/globals.css`:
 - **Code Splitting**: Automatic route-based splitting
 
 ## 🌐 Deployment
+
+### Live Website
+🚀 **Currently deployed at**: [vanshsharma-portfolio.vercel.app](https://vanshsharma-portfolio.vercel.app)
 
 ### Vercel (Recommended)
 1. Push to GitHub
