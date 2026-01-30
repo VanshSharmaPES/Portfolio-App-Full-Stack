@@ -13,6 +13,6 @@ export const PORTFOLIO_DATA = {
   contact: {
     email: "vanshsharma2006asr@gmail.com",
     github: "VanshSharmaPES",
-    linkedin: "vansh-sharma-6b675b354/",
+    linkedin: "vansh-sharma-b82671289",
   }
 };
