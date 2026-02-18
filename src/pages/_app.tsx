@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <main className={inter.variable}>
       <Head>
-        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg?v=5" type="image/svg+xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <title>{PORTFOLIO_DATA.name} | Portfolio</title>
