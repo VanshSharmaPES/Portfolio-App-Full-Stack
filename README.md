@@ -1,238 +1,124 @@
 # 🚀 Vansh Sharma - Portfolio Website
 
-A modern, animated portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features stunning visual effects, smooth animations, and a responsive design that works perfectly on all devices.
+A modern, animated portfolio website built with **Next.js 16**, **TypeScript**, and **Tailwind CSS 4**. Features a "Modern Sunset Minimal" theme, smooth animations, and an adaptive single-screen layout that works perfectly on all devices.
 
 **🌐 Live Website**: [vanshsharma-portfolio.vercel.app](https://vanshsharma-portfolio.vercel.app)
 
-![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![Status](https://img.shields.io/badge/Status-Live-brightgreen)
 ![Next.js](https://img.shields.io/badge/Next.js-16.0.7-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.17-38bdf8)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.17-orange)
 
 ## ✨ Features
 
-### 🎨 Visual Effects
-- **Animated Background Blobs** - Floating gradient orbs with pulse animations
-- **Gradient Text Effects** - Dynamic color transitions on headings
-- **Glow Effects** - Pulsing glows behind icons and elements
-- **Shimmer Animations** - Light sweep effects on underlines
-- **Hover Interactions** - Scale, rotate, and color transitions
-- **Continuous Animations** - Subtle breathing effects throughout
+### 🎨 Visual Identity ("Sunset Minimal")
+-   **Orange & Yellow Theme** - A vibrant gradient palette inspired by sunset hues used for accents, text gradients, and logos.
+-   **Adaptive Single-Screen Layout** - Desktop pages are fixed to the viewport height for a clean app-like feel but **automatically scroll** if content overflows (e.g., small screens).
+-   **System UI Typography** - Uses native iOS/system fonts (`-apple-system`, `BlinkMacSystemFont`) for a crisp, familiar reading experience.
+-   **Code Bracket Logo** - Custom SVG favicon with a solid orange stroke (`#f97316`) representing the developer identity.
 
-### 🎭 Page Animations
-- **Entrance Animations** - Smooth slide-in effects using Framer Motion
-- **Staggered Loading** - Elements appear in sequence
-- **Scroll Animations** - Content animates as you scroll
-- **Interactive Elements** - Buttons with shine effects and icon animations
+### 🎭 Visual Effects
+-   **Fade-In Animations** - Smooth entry transitions using **Framer Motion**.
+-   **Gradient Text** - Dynamic orange-to-yellow color transitions on headings and stats.
+-   **Glass Elements** - Subtle borders and backdrops (`bg-surface-light`) for depth.
+-   **Interactive Cards** - Hover effects with lift, shadow, and border highlights.
 
 ### 📱 Responsive Design
-- **Mobile-First** - Optimized for all screen sizes
-- **Touch-Friendly** - 44px minimum touch targets
-- **Adaptive Layout** - Content reflows perfectly on any device
-- **Cross-Browser** - Works on all modern browsers
-
-### 🎯 Modern UI/UX
-- **Glass Morphism** - Backdrop blur effects
-- **Gradient Backgrounds** - Multi-layered visual depth
-- **Micro-Interactions** - Delightful hover and click effects
-- **Professional Typography** - Inter font with perfect spacing
-- **Consistent Design System** - Cohesive color palette and spacing
+-   **Mobile-First** - Full vertical scrolling on mobile devices with `min-h` logic.
+-   **Smart Footer** - Automatically positions itself at the bottom of content, accessible via scroll on all devices.
+-   **Touch-Friendly** - Optimized touch targets and spacing.
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **[Next.js 16.0.7](https://nextjs.org/)** - React framework with SSG/SSR
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
-- **[Tailwind CSS 4.1.17](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Framer Motion](https://www.framer.com/motion/)** - Animation library
+-   **[Next.js 16.0.7](https://nextjs.org/)** - React framework with App Router & Server Actions support.
+-   **[TypeScript](https://www.typescriptlang.org/)** - Static typing for robust code.
+-   **[Tailwind CSS 4.1.17](https://tailwindcss.com/)** - Next-gen utility-first CSS engine.
+-   **[Framer Motion](https://www.framer.com/motion/)** - Production-ready animation library.
 
 ### Icons & Assets
-- **[Lucide React](https://lucide.dev/)** - Beautiful icon library
-- **[Next/Image](https://nextjs.org/docs/api-reference/next/image)** - Optimized image loading
-- **Custom Animations** - CSS keyframes and transforms
-
-### Development Tools
-- **[ESLint](https://eslint.org/)** - Code linting
-- **[PostCSS](https://postcss.org/)** - CSS processing
-- **[Autoprefixer](https://autoprefixer.github.io/)** - CSS vendor prefixes
+-   **[Lucide React](https://lucide.dev/)** - Consistent, lightweight icon set.
+-   **[Next/Image](https://nextjs.org/docs/api-reference/next/image)** - Performance-optimized image rendering.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
-- npm, yarn, or pnpm
+-   Node.js 18+
+-   npm, yarn, or pnpm
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/vanshsharma2006asr/portfolio-website.git
-   cd portfolio-website
-   ```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/VanshSharmaPES/Portfolio-App-Full-Stack.git
+    cd Portfolio-App-Full-Stack
+    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-   Or visit the live website: **[vanshsharma-portfolio.vercel.app](https://vanshsharma-portfolio.vercel.app)**
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
+4.  **Open your browser**
+    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
 
 ```
-portfolio-website/
-├── public/                 # Static assets
-│   ├── image.jpg          # Profile image
-│   ├── favicon.svg        # Site icon
+portfolio-app/
+├── public/
+│   ├── image.jpg          # Profile photo
+│   ├── favicon.svg        # Custom Orange Code Bracket Logo
 │   └── Vansh_Sharma_Resume.pdf
 ├── src/
-│   ├── components/        # Reusable components
-│   │   └── Layout.tsx     # Main layout with header/footer
-│   ├── data/             # Static data
-│   │   └── portfolioData.ts
-│   ├── pages/            # Next.js pages
-│   │   ├── api/          # API routes
-│   │   ├── index.tsx     # Landing page
-│   │   ├── home.tsx      # Home page
-│   │   ├── about.tsx     # About page
-│   │   ├── projects.tsx  # Projects showcase
-│   │   └── contact.tsx   # Contact form
-│   ├── styles/           # Global styles
-│   │   └── globals.css   # Tailwind + custom CSS
-│   └── types.d.ts        # TypeScript definitions
-├── next.config.ts        # Next.js configuration
-├── tailwind.config.js    # Tailwind configuration
-└── tsconfig.json         # TypeScript configuration
+│   ├── components/
+│   │   └── Layout.tsx     # Main layout wrapper
+│   ├── data/
+│   │   └── portfolioData.ts # Centralized content management
+│   ├── pages/
+│   │   ├── _app.tsx       # Global app configuration
+│   │   ├── index.tsx      # Landing page
+│   │   ├── home.tsx       # Home section
+│   │   ├── projects.tsx   # Projects grid
+│   │   ├── about.tsx      # Bio & Skills
+│   │   └── contact.tsx    # Contact form
+│   ├── styles/
+│   │   └── globals.css    # Tailwind @theme configuration
 ```
 
 ## 🎨 Customization
 
 ### Colors
-The portfolio uses a cyber-dev theme with these colors:
-```css
---color-primary-dark: #170F25;  /* Deep Purple/Black */
---color-accent: #4ade80;        /* Neon Green */
---color-surface-light: #2E2344; /* Muted Purple */
---color-neutral-text: #f3f4f6;  /* Cool Gray */
-```
+The theme uses CSS variables defined in `src/styles/globals.css`:
 
-### Content
-Update your information in `src/data/portfolioData.ts`:
-```typescript
-export const PORTFOLIO_DATA = {
-  name: "Your Name",
-  title: "Your Title",
-  tagline: "Your tagline",
-  about: "Your bio...",
-  skills: ["Skill 1", "Skill 2"],
-  projects: [...],
-  contact: {
-    email: "your.email@example.com",
-    github: "yourusername",
-    linkedin: "yourusername"
-  }
-};
-```
-
-### Animations
-Customize animations in `src/styles/globals.css`:
 ```css
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+:root {
+  --color-primary-dark: #0a0a0a;   /* Deep Black/Gray Background */
+  --color-text: #ededed;           /* Off-White Text */
+  --color-text-muted: #a1a1aa;     /* Muted Gray Text */
+  --color-accent: #f97316;         /* Orange (Primary Brand) */
+  --color-accent-secondary: #facc15; /* Yellow (Gradient End) */
+  --color-surface-light: #171717;  /* Card Backgrounds */
 }
 ```
 
-## 📊 Performance
-
-- **Lighthouse Score**: 95+ on all metrics
-- **Core Web Vitals**: Excellent
-- **Build Time**: ~4 seconds
-- **Bundle Size**: Optimized with Next.js
-- **Image Optimization**: Automatic WebP/AVIF conversion
-- **Code Splitting**: Automatic route-based splitting
-
-## 🌐 Deployment
-
-### Live Website
-🚀 **Currently deployed at**: [vanshsharma-portfolio.vercel.app](https://vanshsharma-portfolio.vercel.app)
-
-### Vercel (Recommended)
-1. Push to GitHub
-2. Connect to [Vercel](https://vercel.com)
-3. Deploy automatically
-
-### Other Platforms
-- **Netlify**: Drag & drop the `out` folder after `npm run build && npm run export`
-- **GitHub Pages**: Use `next export` for static deployment
-- **AWS S3**: Upload build files to S3 bucket
+### Content
+Modify `src/data/portfolioData.ts` to update your personal information, projects, and skills without touching the UI code.
 
 ## 📧 Contact
 
 **Vansh Sharma**
-- 📧 Email: [vanshsharma2006asr@gmail.com](mailto:vanshsharma2006asr@gmail.com)
-- 💼 LinkedIn: [linkedin.com/in/vansh-sharma-pesu](https://linkedin.com/in/vansh-sharma-pesu)
-- 🐙 GitHub: [github.com/VanshSharmaPES](https://github.com/VanshSharmaPES)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Next.js Team** - For the amazing framework
-- **Tailwind CSS** - For the utility-first CSS framework
-- **Framer Motion** - For smooth animations
-- **Lucide** - For beautiful icons
-- **Vercel** - For hosting and deployment
-
-## 📈 Roadmap
-
-- [ ] Add dark/light mode toggle
-- [ ] Implement blog section
-- [ ] Add more interactive animations
-- [ ] Create mobile app version
-- [ ] Add multi-language support
+-   📧 [vanshsharma2006asr@gmail.com](mailto:vanshsharma2006asr@gmail.com)
+-   💼 [LinkedIn](https://linkedin.com/in/vansh-sharma-pesu)
+-   🐙 [GitHub](https://github.com/VanshSharmaPES)
 
 ---
 
 <div align="center">
-
-**Built with ❤️ by [Vansh Sharma](https://github.com/VanshSharmaPES)**
-
-⭐ Star this repo if you found it helpful!
-
+  <b>Built by Vansh Sharma</b>
 </div>
