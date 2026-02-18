@@ -1,11 +1,11 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import Head from 'next/head';
-import { Send, Github, Linkedin, Sparkles, Mail, MessageSquare } from 'lucide-react';
+import { Send, Github, Linkedin, Mail } from 'lucide-react';
 import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
-// --- TYPE FIX ---
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionDiv = motion.div as any;
 
 interface FormData {
@@ -29,7 +29,7 @@ export default function Contact() {
     setMessage('');
 
     try {
-      const response = await fetch('/api/contact', { 
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -45,192 +45,168 @@ export default function Contact() {
         setStatus('error');
         setMessage(responseData.message || 'Submission failed.');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setMessage('A network error occurred.');
     }
   };
 
+  const inputClass =
+    'w-full px-5 py-3 md:py-4 rounded-xl border border-white/10 bg-surface-light text-text placeholder-text-muted/50 text-sm md:text-base focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-200';
+
   return (
     <Layout>
       <Head><title>Contact | {PORTFOLIO_DATA.name}</title></Head>
-      
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-40 left-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-20 w-96 h-96 bg-surface-light/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-      
-      <section className="relative min-h-screen pt-10 px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Enhanced header with advanced animations */}
+
+      <section className="min-h-[calc(100vh-64px)] flex flex-col px-6 sm:px-8 lg:px-16 py-10 md:py-0">
+        <div className="max-w-7xl mx-auto w-full my-auto">
+
+          {/* Header */}
           <MotionDiv
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8 md:mb-10"
           >
-            <div className="flex items-center gap-3 mb-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-accent/30 blur-xl rounded-full animate-pulse"></div>
-                <Sparkles className="w-8 h-8 text-accent animate-pulse relative group-hover:rotate-180 transition-transform duration-500" />
-              </div>
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-neutral-text via-accent to-neutral-text bg-clip-text text-transparent animate-pulse relative">
-                Get In Touch
-                <span className="absolute -top-1 -right-8 text-accent text-sm animate-bounce">💬</span>
-              </h2>
-            </div>
-            <div className="relative h-1 w-32 bg-gradient-to-r from-accent via-accent/50 to-transparent rounded-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer"></div>
-            </div>
+            <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-2">Contact</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-text tracking-tight mb-4">Get In Touch</h1>
+            <div className="w-20 h-1 bg-gradient-to-r from-accent to-accent-secondary rounded-full" />
           </MotionDiv>
-          
-          <div className="max-w-3xl mx-auto space-y-8">
-            {/* Info cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <MotionDiv
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="group p-6 bg-gradient-to-br from-surface-light/60 to-surface-light/30 rounded-xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105"
-              >
-                <Mail className="w-10 h-10 text-accent mb-3 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-neutral-text mb-2">Email Me</h3>
-                <p className="text-neutral-text/80 text-sm">{PORTFOLIO_DATA.contact.email}</p>
-              </MotionDiv>
-              
-              <MotionDiv
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-                className="group p-6 bg-gradient-to-br from-surface-light/60 to-surface-light/30 rounded-xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105"
-              >
-                <MessageSquare className="w-10 h-10 text-accent mb-3 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-neutral-text mb-2">Let's Connect</h3>
-                <p className="text-neutral-text/80 text-sm">Available for freelance projects</p>
-              </MotionDiv>
-            </div>
-            
-            <MotionDiv 
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-16 items-center">
+
+            {/* Left — info */}
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="relative bg-gradient-to-br from-surface-light/80 to-surface-light/40 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-neutral-text border-2 border-accent/20 hover:shadow-accent/10 transition-shadow duration-300"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="lg:col-span-2 space-y-8 md:space-y-10"
             >
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-accent/5 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              
-              <form onSubmit={handleSubmit} className="relative space-y-6">
-                <div className="group">
-                  <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium mb-2 text-accent">
-                    <span className="w-2 h-2 bg-accent rounded-full group-focus-within:scale-150 transition-transform"></span>
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 border-2 border-accent/30 rounded-xl shadow-sm focus:ring-2 focus:ring-accent focus:border-accent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30 transition-all duration-300 hover:border-accent/50"
-                  />
+              <div>
+                <p className="text-lg md:text-xl text-text-muted leading-relaxed mb-6 md:mb-8">
+                  I&apos;m currently open to new opportunities. Whether you have a question or just want to say hi, my inbox is always open.
+                </p>
+
+                <a
+                  href={`mailto:${PORTFOLIO_DATA.contact.email}`}
+                  className="inline-flex items-center gap-3 text-base md:text-lg font-medium text-text hover:text-accent transition-colors duration-200 no-underline"
+                >
+                  <div className="p-2 md:p-3 rounded-full bg-surface-light border border-white/10 text-accent">
+                    <Mail className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  {PORTFOLIO_DATA.contact.email}
+                </a>
+              </div>
+
+              {/* Social links */}
+              <div className="flex gap-4">
+                <a
+                  href={`https://github.com/${PORTFOLIO_DATA.contact.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full border border-white/10 bg-surface-light text-text-muted hover:text-text hover:border-accent transition-all duration-200 no-underline"
+                >
+                  <Github className="w-4 h-4 md:w-5 md:h-5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full border border-white/10 bg-surface-light text-text-muted hover:text-text hover:border-accent transition-all duration-200 no-underline"
+                >
+                  <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </MotionDiv>
+
+            {/* Right — form */}
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="lg:col-span-3"
+            >
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-2 ml-1">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Jane Doe"
+                      className={inputClass}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-2 ml-1">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="jane@example.com"
+                      className={inputClass}
+                    />
+                  </div>
                 </div>
-                <div className="group">
-                  <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium mb-2 text-accent">
-                    <span className="w-2 h-2 bg-accent rounded-full group-focus-within:scale-150 transition-transform"></span>
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="your.email@example.com"
-                    className="w-full px-4 py-3 border-2 border-accent/30 rounded-xl shadow-sm focus:ring-2 focus:ring-accent focus:border-accent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30 transition-all duration-300 hover:border-accent/50"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium mb-2 text-accent">
-                    <span className="w-2 h-2 bg-accent rounded-full group-focus-within:scale-150 transition-transform"></span>
-                    Message *
+
+                <div>
+                  <label htmlFor="message" className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-2 ml-1">
+                    Message
                   </label>
                   <textarea
                     name="message"
                     id="message"
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="How can I help you?"
-                    className="w-full px-4 py-3 border-2 border-accent/30 rounded-xl shadow-sm focus:ring-2 focus:ring-accent focus:border-accent bg-primary-dark/50 text-neutral-text placeholder-neutral-text/30 transition-all duration-300 hover:border-accent/50 resize-none"
-                  ></textarea>
+                    placeholder="Tell me about your project..."
+                    className={`${inputClass} resize-none`}
+                  />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="group relative w-full flex justify-center items-center px-8 py-4 border-2 border-transparent text-base font-semibold rounded-xl shadow-lg text-primary-dark bg-accent hover:bg-accent/90 disabled:opacity-50 transition-all duration-300 transform hover:scale-[1.02] active:scale-95 overflow-hidden"
+                  className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-8 py-3 bg-gradient-to-r from-accent to-accent-secondary text-primary-dark text-base font-bold rounded-xl hover:opacity-90 disabled:opacity-50 transition-all duration-200 shadow-lg shadow-orange-500/20"
                 >
-                  <span className="relative z-10 flex items-center">
-                    {status === 'loading' ? (
-                      <span className="animate-pulse">Sending...</span>
-                    ) : (
-                      <>
-                        Send Message 
-                        <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </>
-                    )}
-                  </span>
-                  {/* Shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                  {status === 'loading' ? 'Sending…' : (
+                    <>
+                      Send Message
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
                 </button>
               </form>
 
               {message && (
                 <MotionDiv
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className={`mt-6 p-4 rounded-xl text-sm text-center font-medium border-2 ${
-                    status === 'success' 
-                      ? 'bg-green-900/30 text-green-300 border-green-500/30' 
-                      : 'bg-red-900/30 text-red-300 border-red-500/30'
-                  }`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mt-4 p-4 rounded-xl text-sm font-medium border ${status === 'success'
+                    ? 'bg-green-950/40 text-green-400 border-green-900'
+                    : 'bg-red-950/40 text-red-400 border-red-900'
+                    }`}
                 >
                   {message}
                 </MotionDiv>
               )}
             </MotionDiv>
 
-            {/* Social links with enhanced effects */}
-            <MotionDiv
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex justify-center space-x-8 pt-4"
-            >
-              <a 
-                href={`https://github.com/${PORTFOLIO_DATA.contact.github}`} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group relative p-4 bg-gradient-to-br from-surface-light/60 to-surface-light/30 rounded-xl border border-accent/20 hover:border-accent/40 text-neutral-text hover:text-accent transition-all duration-300 transform hover:scale-110 active:scale-95"
-              >
-                <div className="absolute inset-0 bg-accent/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <Github className="w-8 h-8 relative group-hover:rotate-12 transition-transform" />
-              </a>
-              <a 
-                href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group relative p-4 bg-gradient-to-br from-surface-light/60 to-surface-light/30 rounded-xl border border-accent/20 hover:border-accent/40 text-neutral-text hover:text-accent transition-all duration-300 transform hover:scale-110 active:scale-95"
-              >
-                <div className="absolute inset-0 bg-accent/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <Linkedin className="w-8 h-8 relative group-hover:rotate-12 transition-transform" />
-              </a>
-            </MotionDiv>
           </div>
         </div>
       </section>

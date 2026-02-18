@@ -13,7 +13,9 @@ const inter = Inter({
 });
 
 // --- TYPE FIX ---
+// --- TYPE FIX ---
 // We cast motion.div to 'any' to bypass the React 19 className conflict.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionDiv = motion.div as any;
 
 const containerVariants = {
@@ -23,7 +25,7 @@ const containerVariants = {
   enter: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, 
+      staggerChildren: 0.15,
       delayChildren: 0.1,
     },
   },
@@ -43,23 +45,23 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+
         <title>{PORTFOLIO_DATA.name} | Portfolio</title>
         <meta name="description" content={PORTFOLIO_DATA.tagline} />
         <meta name="keywords" content={PORTFOLIO_DATA.skills.join(", ")} />
         <meta name="author" content={PORTFOLIO_DATA.name} />
-        
+
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`${PORTFOLIO_DATA.name} | Portfolio`} />
         <meta property="og:description" content={PORTFOLIO_DATA.tagline} />
         <meta property="og:image" content="/image.jpg" />
-        
+
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={`${PORTFOLIO_DATA.name} | Portfolio`} />
         <meta property="twitter:description" content={PORTFOLIO_DATA.tagline} />
         <meta property="twitter:image" content="/image.jpg" />
       </Head>
-      
+
       <AnimatePresence mode="wait">
         {/* Usng MotionDiv instead of motion.div to avoid type error */}
         <MotionDiv

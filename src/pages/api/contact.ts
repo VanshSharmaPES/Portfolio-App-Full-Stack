@@ -27,15 +27,15 @@ export default async function handler(
 
     // 2. Send Email Notification
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-        const transporter = nodemailer.createTransport({
-        service: 'gmail', 
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
         auth: {
-            user: process.env.EMAIL_USER, 
-            pass: process.env.EMAIL_PASS, 
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
         },
-        });
+      });
 
-        const mailOptions = {
+      const mailOptions = {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER, // Send to yourself
         subject: `New Portfolio Contact from ${name}`,
@@ -44,19 +44,20 @@ export default async function handler(
             Email: ${email}
             Message: ${message}
         `,
-        };
+      };
 
-        try {
-            await transporter.sendMail(mailOptions);
-            console.log('Email notification sent successfully.');
-        } catch (emailError) {
-            console.error('Failed to send email notification:', emailError);
-            // We do NOT fail the response here, as the DB save was successful.
-        }
+      try {
+        await transporter.sendMail(mailOptions);
+        console.log('Email notification sent successfully.');
+      } catch (emailError) {
+        console.error('Failed to send email notification:', emailError);
+        // We do NOT fail the response here, as the DB save was successful.
+      }
     }
 
     return res.status(201).json({ success: true, message: 'Message sent successfully!', data: newMessage });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('API Error:', error.message);
     return res.status(500).json({ success: false, message: 'Server error occurred.' });

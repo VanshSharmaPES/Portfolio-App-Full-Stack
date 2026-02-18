@@ -1,118 +1,92 @@
 import React from 'react';
 import Head from 'next/head';
-import { Code, Sparkles, Award, Users, Zap } from 'lucide-react';
 import Layout from '../components/Layout';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 
-// --- TYPE FIX ---
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionDiv = motion.div as any;
 
 export default function About() {
   return (
     <Layout>
       <Head><title>About | {PORTFOLIO_DATA.name}</title></Head>
-      
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-40 left-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-20 w-96 h-96 bg-surface-light/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-      
-      <section className="relative min-h-screen pt-10 px-4 sm:px-8 lg:px-16 bg-primary-dark text-neutral-text z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Enhanced header with advanced animations */}
+
+      <section className="min-h-[calc(100vh-64px)] flex flex-col px-6 sm:px-8 lg:px-16 py-10 md:py-0">
+        <div className="max-w-7xl mx-auto w-full my-auto">
+
+          {/* Header */}
           <MotionDiv
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8 md:mb-12 pt-6"
           >
-            <div className="flex items-center gap-3 mb-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-accent/30 blur-xl rounded-full animate-pulse"></div>
-                <Sparkles className="w-8 h-8 text-accent animate-pulse relative group-hover:rotate-180 transition-transform duration-500" />
-              </div>
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-neutral-text via-accent to-neutral-text bg-clip-text text-transparent animate-pulse relative">
-                About Me
-                <span className="absolute -top-1 -right-8 text-accent text-sm animate-bounce">✨</span>
-              </h2>
-            </div>
-            <div className="relative h-1 w-32 bg-gradient-to-r from-accent via-accent/50 to-transparent rounded-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer"></div>
-            </div>
+            <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-2">About</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-text tracking-tight mb-4">
+              Who I Am
+            </h1>
+            <div className="w-20 h-1 bg-gradient-to-r from-accent to-accent-secondary rounded-full" />
           </MotionDiv>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <MotionDiv 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-2 space-y-6"
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-start pb-6">
+
+            {/* Bio */}
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="lg:col-span-2 space-y-6 md:space-y-8"
             >
-              {/* Bio card with gradient */}
-              <div className="p-8 bg-gradient-to-br from-surface-light/80 to-surface-light/40 backdrop-blur-sm rounded-2xl border-2 border-accent/20 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <p className="text-lg text-neutral-text/90 leading-relaxed text-justify mb-6">
-                  {PORTFOLIO_DATA.about}
+              <p className="text-base md:text-lg text-text-muted leading-relaxed line-clamp-6 md:line-clamp-none">
+                {PORTFOLIO_DATA.about}
+              </p>
+
+              <div className="p-4 md:p-6 border-l-4 border-accent bg-surface-light/50 rounded-r-xl">
+                <p className="text-sm md:text-base text-text-muted italic">
+                  Always open to new opportunities and collaborations.
                 </p>
-                <div className="flex items-center gap-3 p-4 bg-accent/10 border-l-4 border-accent rounded-r-lg">
-                  <Zap className="w-6 h-6 text-accent animate-pulse" />
-                  <p className="text-lg font-semibold text-accent">
-                    I am always open to new opportunities and collaborations. Let's build something great together!
-                  </p>
-                </div>
               </div>
-              
+
               {/* Highlight cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group p-6 bg-gradient-to-br from-surface-light/60 to-surface-light/30 rounded-xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  <Award className="w-10 h-10 text-accent mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-bold text-neutral-text mb-2">Education</h3>
-                  <p className="text-neutral-text/80">B.Tech in Computer Science (AI/ML) at PES University</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-5 md:p-6 rounded-2xl bg-surface-light border border-white/5 hover:border-accent/20 transition-colors">
+                  <h3 className="text-base font-bold text-text mb-1">Education</h3>
+                  <p className="text-sm text-text-muted">B.Tech in Computer Science (AI/ML) at PES University</p>
                 </div>
-                
-                <div className="group p-6 bg-gradient-to-br from-surface-light/60 to-surface-light/30 rounded-xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  <Users className="w-10 h-10 text-accent mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-bold text-neutral-text mb-2">Community</h3>
-                  <p className="text-neutral-text/80">Active contributor in tech communities and student organizations</p>
+                <div className="p-5 md:p-6 rounded-2xl bg-surface-light border border-white/5 hover:border-accent/20 transition-colors">
+                  <h3 className="text-base font-bold text-text mb-1">Community</h3>
+                  <p className="text-sm text-text-muted">Active contributor in tech communities and student organizations</p>
                 </div>
               </div>
             </MotionDiv>
-            
-            <MotionDiv 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+
+            {/* Skills Wrapper - Reverted to Vertical List */}
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-1"
             >
-              <div className="sticky top-24 p-8 bg-gradient-to-br from-surface-light/80 to-surface-light/40 backdrop-blur-sm rounded-2xl border-2 border-accent/20 shadow-xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-accent/20 rounded-lg">
-                    <Code className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-accent">Core Skills</h3>
-                </div>
-                <ul className="space-y-4">
-                  {PORTFOLIO_DATA.skills.map((skill, index) => (
-                    <MotionDiv
-                      key={skill}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + index * 0.05 }}
-                      className="group"
-                    >
-                      <li className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-accent/30">
-                        <div className="w-2 h-2 bg-accent rounded-full group-hover:scale-150 transition-transform"></div>
-                        <span className="font-medium group-hover:text-accent transition-colors">{skill}</span>
-                      </li>
-                    </MotionDiv>
+              <div className="p-6 md:p-8 rounded-2xl bg-surface-light border border-white/5">
+                <h3 className="text-sm font-bold text-text-muted uppercase tracking-widest mb-4 md:mb-6">Skills</h3>
+
+                {/* Vertical List with Theme Accents */}
+                <ul className="space-y-3">
+                  {PORTFOLIO_DATA.skills.map((skill) => (
+                    <li key={skill} className="flex items-center gap-3 text-base font-medium text-text-muted hover:text-text transition-colors duration-200 group cursor-default">
+                      {/* Theme Dot */}
+                      <span className="w-2 h-2 rounded-full bg-accent/70 group-hover:bg-accent group-hover:shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300" />
+                      {skill}
+                    </li>
                   ))}
                 </ul>
               </div>
             </MotionDiv>
+
           </div>
         </div>
       </section>
-    </Layout>
+    </Layout >
   );
 }
