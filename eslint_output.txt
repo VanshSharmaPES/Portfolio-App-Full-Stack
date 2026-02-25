@@ -1,0 +1,39 @@
+
+C:\VanshSharma\Projects\Full Stack Portfolio App\portfolio-app\src\components\Hero.tsx
+    4:18  warning  'useAnimation' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+    4:32  warning  'useInView' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+   36:7   error    Error: Cannot access variable before it is declared
+
+`tick` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\VanshSharma\Projects\Full Stack Portfolio App\portfolio-app\src\components\Hero.tsx:36:7
+  34 |   useEffect(() => {
+  35 |     const ticker = setInterval(() => {
+> 36 |       tick();
+     |       ^^^^ `tick` accessed before it is declared
+  37 |     }, typingSpeed);
+  38 |
+  39 |     return () => clearInterval(ticker);
+
+C:\VanshSharma\Projects\Full Stack Portfolio App\portfolio-app\src\components\Hero.tsx:42:3
+  40 |   }, [typewriterText, isDeleting, typingSpeed]);
+  41 |
+> 42 |   const tick = () => {
+     |   ^^^^^^^^^^^^^^^^^^^^
+> 43 |     const i = loopNum % roles.length;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 44 |     const fullText = roles[i];
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 60 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 61 |   };
+     | ^^^^^ `tick` is declared here
+  62 |
+  63 |   // Spotlight effect tracking
+  64 |   useEffect(() => {  react-hooks/immutability
+   40:6   warning  React Hook useEffect has a missing dependency: 'tick'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/exhaustive-deps
+  135:23  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react/no-unescaped-entities
+
+Γ£û 5 problems (2 errors, 3 warnings)
+
