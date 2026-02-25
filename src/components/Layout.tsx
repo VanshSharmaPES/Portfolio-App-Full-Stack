@@ -7,6 +7,8 @@ import { Syne, JetBrains_Mono } from "next/font/google";
 const syne = Syne({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
+import CustomCursor from './CustomCursor';
+
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,6 +21,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className={`min-h-screen bg-[#0a0a0a] font-sans flex flex-col text-[#fafafa] selection:bg-[#f59e0b] selection:text-[#0a0a0a] relative`}>
+
+      <CustomCursor />
 
       {/* Global Background Noise */}
       <div

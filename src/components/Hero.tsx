@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Syne, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import Image from "next/image";
 
@@ -32,6 +32,7 @@ const roles = ["Full Stack Developer", "Backend Engineer", "Frontend Specialist"
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
 
   // Typewriter state
@@ -76,9 +77,12 @@ export default function Hero() {
     const handleMouseMove = (e: MouseEvent) => {
       if (!heroRef.current) return;
       const rect = heroRef.current.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setMousePosition({ x, y });
+      setParallax({
+        x: (x / rect.width) * 2 - 1,
+        y: (y / rect.height) * 2 - 1,
       });
     };
 
@@ -189,29 +193,73 @@ export default function Hero() {
                   <div className="absolute inset-0 h-full w-full bg-white/5 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
                 </a>
               </MagneticButton>
+
+              <div className="flex items-center gap-3">
+                <MagneticButton>
+                  <a
+                    href={`https://github.com/${PORTFOLIO_DATA.contact.github}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative overflow-hidden group inline-flex items-center justify-center p-4 border border-white/10 rounded-full bg-transparent hover:border-[#f59e0b]/30 transition-all duration-300"
+                  >
+                    <Github className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 relative z-10 text-[#a3a3a3] group-hover:text-[#fafafa]" />
+                    <div className="absolute inset-0 h-full w-full bg-white/5 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
+                  </a>
+                </MagneticButton>
+
+                <MagneticButton>
+                  <a
+                    href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative overflow-hidden group inline-flex items-center justify-center p-4 border border-white/10 rounded-full bg-transparent hover:border-[#f59e0b]/30 transition-all duration-300"
+                  >
+                    <Linkedin className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 relative z-10 text-[#a3a3a3] group-hover:text-[#fafafa]" />
+                    <div className="absolute inset-0 h-full w-full bg-white/5 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
+                  </a>
+                </MagneticButton>
+              </div>
             </MotionDiv>
           </div>
 
           {/* Photo */}
-          <MotionDiv
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="shrink-0 relative pt-4 md:ml-auto"
-          >
-            {/* Minimal aesthetic border & glow */}
-            <div className="absolute inset-0 rounded-full bg-[#f59e0b]/20 blur-[60px] md:blur-[80px]" />
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/10 relative z-10 bg-[#171717] ring-1 ring-[#f59e0b]/20 hover:ring-[#f59e0b]/50 transition-all duration-500">
-              <Image
-                src="/image.jpg"
-                alt="Vansh Sharma"
-                width={320}
-                height={320}
-                className="object-cover w-full h-full grayscale-[20%] contrast-125 transition-all duration-500 hover:grayscale-0 hover:scale-105"
-                priority
+          <div style={{ perspective: 1000 }} className="shrink-0 relative pt-4 md:ml-auto">
+            <MotionDiv
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                filter: "blur(0px)",
+                rotateY: parallax.x * 12,
+                rotateX: -parallax.y * 12,
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+                rotateY: { type: "spring", stiffness: 70, damping: 30 },
+                rotateX: { type: "spring", stiffness: 70, damping: 30 }
+              }}
+              className="relative"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {/* Minimal aesthetic border & glow */}
+              <div
+                className="absolute inset-0 rounded-full bg-[#f59e0b]/20 blur-[60px] md:blur-[80px]"
+                style={{ transform: "translateZ(-50px)" }}
               />
-            </div>
-          </MotionDiv>
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/10 relative z-10 bg-[#171717] ring-1 ring-[#f59e0b]/20 hover:ring-[#f59e0b]/50 transition-all duration-500 shadow-2xl">
+                <Image
+                  src="/image.jpg"
+                  alt="Vansh Sharma"
+                  width={320}
+                  height={320}
+                  className="object-cover w-full h-full grayscale-[20%] contrast-125 transition-all duration-500 hover:grayscale-0 hover:scale-110"
+                  priority
+                />
+              </div>
+            </MotionDiv>
+          </div>
 
         </div>
 

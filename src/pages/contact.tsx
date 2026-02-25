@@ -109,28 +109,6 @@ export default function Contact() {
                   </span>
                 </a>
               </div>
-
-              {/* Social links */}
-              <div className="flex flex-wrap gap-4 pt-4 border-t border-white/5">
-                <a
-                  href={`https://github.com/${PORTFOLIO_DATA.contact.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${jetbrainsMono.className} inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-white/5 bg-[#171717] text-[#a3a3a3] hover:text-[#0a0a0a] hover:bg-[#f59e0b] hover:border-[#f59e0b] transition-all duration-300 no-underline shadow-lg shadow-black/20 group`}
-                >
-                  <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold text-sm uppercase tracking-wider">GitHub</span>
-                </a>
-                <a
-                  href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${jetbrainsMono.className} inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-white/5 bg-[#171717] text-[#a3a3a3] hover:text-[#0a0a0a] hover:bg-[#f59e0b] hover:border-[#f59e0b] transition-all duration-300 no-underline shadow-lg shadow-black/20 group`}
-                >
-                  <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold text-sm uppercase tracking-wider">LinkedIn</span>
-                </a>
-              </div>
             </MotionDiv>
 
             {/* Right — form */}
