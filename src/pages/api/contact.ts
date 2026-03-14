@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import nodemailer from 'nodemailer';
-import dbConnect from '@/lib/mongoose';
-import Message from '@/models/Message';
+import { Resend } from 'resend';
+import { supabase } from '@/lib/supabase';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,8 +13,6 @@ export default async function handler(
     return res.status(405).json({ success: false, message: `Method ${req.method} Not Allowed` });
   }
 
-  await dbConnect();
-
   const { name, email, message } = req.body;
 
   // Strict validation: All fields are mandatory
@@ -22,36 +21,30 @@ export default async function handler(
   }
 
   try {
-    // 1. Save to MongoDB
-    const newMessage = await Message.create({ name, email, message });
+    // 1. Save to Supabase (PostgreSQL)
+    const { data: newMessage, error: supabaseError } = await supabase
+      .from('messages')
+      .insert([{ name, email, message }])
+      .select()
+      .single();
 
-    // 2. Send Email Notification
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+    if (supabaseError) {
+      console.error('Supabase Insert Error:', supabaseError);
+      return res.status(500).json({ success: false, message: 'Failed to save message to database.' });
+    }
 
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Send to yourself
-        subject: `New Portfolio Contact from ${name}`,
-        text: `
-            Name: ${name}
-            Email: ${email}
-            Message: ${message}
-        `,
-      };
-
+    // 2. Send Email Notification via Resend (HTTPS, bypasses port blocks)
+    if (process.env.RESEND_API_KEY && process.env.EMAIL_USER) {
       try {
-        await transporter.sendMail(mailOptions);
-        console.log('Email notification sent successfully.');
+        await resend.emails.send({
+          from: 'Acme <onboarding@resend.dev>', // Resend's default testing domain
+          to: process.env.EMAIL_USER, // Send to your own email attached in env
+          subject: `New Portfolio Contact from ${name}`,
+          text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        });
+        console.log('Email notification sent successfully via Resend.');
       } catch (emailError) {
         console.error('Failed to send email notification:', emailError);
-        // We do NOT fail the response here, as the DB save was successful.
       }
     }
 
@@ -63,3 +56,4 @@ export default async function handler(
     return res.status(500).json({ success: false, message: 'Server error occurred.' });
   }
 }
+
