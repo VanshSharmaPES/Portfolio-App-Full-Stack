@@ -36,16 +36,23 @@ export default async function handler(
     // 2. Send Email Notification via Resend (HTTPS, bypasses port blocks)
     if (process.env.RESEND_API_KEY && process.env.EMAIL_USER) {
       try {
-        await resend.emails.send({
+        const { data, error } = await resend.emails.send({
           from: 'Acme <onboarding@resend.dev>', // Resend's default testing domain
           to: process.env.EMAIL_USER, // Send to your own email attached in env
           subject: `New Portfolio Contact from ${name}`,
           text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         });
-        console.log('Email notification sent successfully via Resend.');
+        
+        if (error) {
+          console.error('Resend API Error:', error);
+        } else {
+          console.log('Email notification sent successfully via Resend. ID:', data?.id);
+        }
       } catch (emailError) {
-        console.error('Failed to send email notification:', emailError);
+        console.error('Failed to send email notification (Exception):', emailError);
       }
+    } else {
+      console.warn("Skipping email send: Missing RESEND_API_KEY or EMAIL_USER");
     }
 
     return res.status(201).json({ success: true, message: 'Message sent successfully!', data: newMessage });
