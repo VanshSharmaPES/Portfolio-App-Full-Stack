@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <title>{PORTFOLIO_DATA.name} | Portfolio</title>
         <meta name="description" content={PORTFOLIO_DATA.tagline} />
-        <meta name="keywords" content={PORTFOLIO_DATA.skills.join(", ")} />
+        <meta name="keywords" content={[...PORTFOLIO_DATA.frontendSkills, ...PORTFOLIO_DATA.aiMlSkills].join(", ")} />
         <meta name="author" content={PORTFOLIO_DATA.name} />
 
         <meta property="og:type" content="website" />

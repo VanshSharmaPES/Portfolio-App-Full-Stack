@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { Syne, JetBrains_Mono } from "next/font/google";
 
@@ -11,6 +12,8 @@ import CustomCursor from './CustomCursor';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const isHomePage = router.pathname === '/home';
 
   const navLinks = [
     { name: "Home", href: "/home" },
@@ -33,7 +36,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       />
 
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className="w-full px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
 
             <Link href="/home" className={`${syne.className} text-2xl font-bold tracking-tight no-underline group`}>
@@ -42,18 +45,43 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </span>
             </Link>
 
-            <nav className="hidden md:block">
-              <ul className={`flex space-x-10 m-0 p-0 list-none ${jetbrainsMono.className}`}>
-                {navLinks.map(({ name, href }) => (
-                  <li key={name}>
-                    <Link href={href} className="relative text-sm font-semibold uppercase tracking-wider text-[#a3a3a3] hover:text-[#fafafa] transition-colors duration-200 no-underline group">
-                      {name}
-                      <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#f59e0b] group-hover:w-full transition-all duration-300 ease-out" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <div className="hidden md:flex items-center gap-10">
+              <nav>
+                <ul className={`flex space-x-10 m-0 p-0 list-none ${jetbrainsMono.className}`}>
+                  {navLinks.map(({ name, href }) => (
+                    <li key={name}>
+                      <Link href={href} className="relative text-sm font-semibold uppercase tracking-wider text-[#a3a3a3] hover:text-[#fafafa] transition-colors duration-200 no-underline group">
+                        {name}
+                        <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#f59e0b] group-hover:w-full transition-all duration-300 ease-out" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {!isHomePage && (
+                <div className="flex items-center gap-5 border-l border-white/10 pl-6">
+                  <a
+                    href={`https://github.com/${PORTFOLIO_DATA.contact.github}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#a3a3a3] hover:text-[#f59e0b] transition-colors duration-200"
+                    aria-label="GitHub"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#a3a3a3] hover:text-[#f59e0b] transition-colors duration-200"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
+              )}
+            </div>
 
             <button
               className="md:hidden text-[#a3a3a3] hover:text-[#fafafa] p-2 transition-colors"
@@ -80,6 +108,28 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </li>
               ))}
             </ul>
+            {!isHomePage && (
+              <div className="flex items-center gap-6 px-8 pb-6 pt-2 border-t border-white/5">
+                <a
+                  href={`https://github.com/${PORTFOLIO_DATA.contact.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#a3a3a3] hover:text-[#f59e0b] transition-colors duration-200"
+                  aria-label="GitHub"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a
+                  href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#a3a3a3] hover:text-[#f59e0b] transition-colors duration-200"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
+            )}
           </nav>
         )}
       </header>

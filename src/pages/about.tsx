@@ -14,13 +14,18 @@ export default function About() {
   const highlights = [
     {
       title: "Education",
-      desc: "B.Tech in Computer Science (AI/ML) at PES University",
+      desc: "B.Tech in Computer Science (AI/ML) at PES University, graduating 2028",
       year: "2024 - Present"
     },
     {
       title: "Community",
       desc: "Active contributor in tech communities and student organizations",
       year: "Constant"
+    },
+    {
+      title: "Recognition",
+      desc: "7th Place — Kalpana 6.0 Hackathon, PES University (Sanjeevani)",
+      year: "2026"
     },
     {
       title: "Opportunities",
@@ -128,8 +133,30 @@ export default function About() {
               Technical Arsenal
             </h3>
 
+            {/* Frontend & Core */}
+            <p className={`${jetbrainsMono.className} text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-4 text-center`}>
+              Frontend & Core
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10">
+              {PORTFOLIO_DATA.frontendSkills.map((skill: string) => (
+                <MotionDiv
+                  key={skill}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  className="px-6 py-4 rounded-xl bg-[#171717] border border-white/5 hover:border-[#f59e0b]/50 hover:bg-[#f59e0b]/10 transition-all duration-300 group cursor-default shadow-lg shadow-black/20"
+                >
+                  <span className={`${jetbrainsMono.className} text-base font-semibold text-[#a3a3a3] group-hover:text-[#fafafa] transition-colors`}>
+                    {skill}
+                  </span>
+                </MotionDiv>
+              ))}
+            </div>
+
+            {/* AI / ML & Backend */}
+            <p className={`${jetbrainsMono.className} text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-4 text-center`}>
+              AI / ML & Backend
+            </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              {PORTFOLIO_DATA.skills.map((skill) => (
+              {PORTFOLIO_DATA.aiMlSkills.map((skill: string) => (
                 <MotionDiv
                   key={skill}
                   whileHover={{ y: -5, scale: 1.05 }}

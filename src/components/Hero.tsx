@@ -28,7 +28,7 @@ const stats = [
   { value: "MERN", label: "Core Stack" },
 ];
 
-const roles = ["Full Stack Developer", "Backend Engineer", "Frontend Specialist"];
+const roles = ["Full Stack Developer", "Backend Engineer", "Frontend Specialist", "AIML Engineer"];
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
