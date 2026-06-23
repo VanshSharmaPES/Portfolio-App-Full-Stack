@@ -55,7 +55,7 @@ export default function Contact() {
   };
 
   const inputClass =
-    `w-full px-5 py-4 mt-2 rounded-xl border border-white/5 bg-[#171717] text-[#fafafa] placeholder-[#a3a3a3]/50 text-base focus:outline-none focus:border-[#f59e0b] focus:ring-1 focus:ring-[#f59e0b]/50 transition-all duration-300 shadow-inner shadow-black/50 ${jetbrainsMono.className}`;
+    `w-full px-5 py-4 mt-2 rounded-none border border-white/5 bg-[#171717] text-[#fafafa] placeholder-[#a3a3a3]/50 text-base focus:outline-none focus:border-[#f59e0b] focus:ring-1 focus:ring-[#f59e0b]/50 transition-all duration-300 shadow-inner shadow-black/50 ${jetbrainsMono.className}`;
 
   return (
     <Layout>
@@ -100,7 +100,7 @@ export default function Contact() {
                   href={`mailto:${PORTFOLIO_DATA.contact.email}`}
                   className={`${jetbrainsMono.className} inline-flex items-center gap-4 text-base md:text-lg font-medium text-[#fafafa] hover:text-[#f59e0b] transition-colors duration-300 no-underline group`}
                 >
-                  <div className="p-4 rounded-2xl bg-[#171717] border border-white/5 text-[#f59e0b] group-hover:scale-110 group-hover:bg-[#f59e0b]/10 transition-all duration-300 shadow-lg shadow-black/20">
+                  <div className="p-4 rounded-none bg-[#171717] border border-white/5 text-[#f59e0b] group-hover:scale-110 group-hover:bg-[#f59e0b]/10 transition-all duration-300 shadow-lg shadow-black/20">
                     <Mail className="w-6 h-6" />
                   </div>
                   <span className="relative">
@@ -119,9 +119,9 @@ export default function Contact() {
               className="relative"
             >
               {/* Decorative Form Glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#f59e0b]/10 to-transparent blur-2xl -z-10 rounded-3xl pointer-events-none" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#f59e0b]/10 to-transparent blur-2xl -z-10 rounded-none pointer-events-none" />
 
-              <form onSubmit={handleSubmit} className="space-y-6 bg-[#0a0a0a] p-8 md:p-10 rounded-3xl border border-white/5 shadow-2xl">
+              <form onSubmit={handleSubmit} className="space-y-6 bg-[#0a0a0a] p-8 md:p-10 rounded-none border border-white/5 shadow-2xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className={`${jetbrainsMono.className} block text-xs font-bold text-[#a3a3a3] uppercase tracking-widest ml-2`}>
@@ -176,7 +176,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className={`${jetbrainsMono.className} relative overflow-hidden group w-full flex justify-center items-center gap-3 px-8 py-5 bg-[#f59e0b] text-[#0a0a0a] text-sm font-bold tracking-wide uppercase rounded-xl disabled:opacity-50 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)]`}
+                    className={`${jetbrainsMono.className} relative overflow-hidden group w-full flex justify-center items-center gap-3 px-8 py-5 bg-[#f59e0b] text-[#0a0a0a] text-sm font-bold tracking-wide uppercase rounded-none disabled:opacity-50 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)]`}
                   >
                     <span className="relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:-translate-y-1">
                       {status === 'loading' ? 'Sending...' : 'Send Message'}
@@ -190,7 +190,7 @@ export default function Contact() {
                   <MotionDiv
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`${jetbrainsMono.className} mt-6 p-5 rounded-xl text-sm font-semibold border text-center ${status === 'success'
+                    className={`${jetbrainsMono.className} mt-6 p-5 rounded-none text-sm font-semibold border text-center ${status === 'success'
                       ? 'bg-green-950/20 text-green-400 border-green-900/50'
                       : 'bg-red-950/20 text-red-400 border-red-900/50'
                       }`}

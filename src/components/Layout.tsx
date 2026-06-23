@@ -101,7 +101,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <Link
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-4 text-sm font-semibold uppercase tracking-wider text-[#a3a3a3] hover:text-[#fafafa] hover:bg-white/5 rounded-lg no-underline transition-colors"
+                    className="block px-4 py-4 text-sm font-semibold uppercase tracking-wider text-[#a3a3a3] hover:text-[#fafafa] hover:bg-white/5 rounded-none no-underline transition-colors"
                   >
                     {name}
                   </Link>
@@ -140,7 +140,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       <footer className="border-t border-white/5 py-12 mt-auto relative z-10 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center gap-4">
-          <div className="w-12 h-[2px] bg-[#f59e0b] rounded-full opacity-50 mb-2"></div>
+          <div className="w-12 h-[2px] bg-[#f59e0b] rounded-none opacity-50 mb-2"></div>
           <p className={`${jetbrainsMono.className} text-xs uppercase tracking-widest text-[#a3a3a3]`}>
             Built with Next.js &amp; Framer Motion
           </p>

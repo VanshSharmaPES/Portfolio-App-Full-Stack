@@ -72,7 +72,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true, margin: "-50px" }}
-      className="group relative flex flex-col p-8 md:p-10 rounded-2xl bg-[#171717]/50 border border-white/5 overflow-hidden min-h-[400px]"
+      className="group relative flex flex-col p-8 md:p-10 rounded-none bg-[#171717]/50 border border-white/5 overflow-hidden min-h-[400px]"
     >
       {/* Dynamic Hover Background Reveal */}
       <MotionDiv
@@ -98,7 +98,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute top-0 right-0 p-3 rounded-full bg-white/5 border border-white/10 text-[#a3a3a3] hover:text-[#0a0a0a] hover:bg-[#f59e0b] hover:border-[#f59e0b] transition-all duration-300 z-20 group/link"
+            className="absolute top-0 right-0 p-3 rounded-none bg-white/5 border border-white/10 text-[#a3a3a3] hover:text-[#0a0a0a] hover:bg-[#f59e0b] hover:border-[#f59e0b] transition-all duration-300 z-20 group/link"
           >
             <Github className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
           </a>
@@ -111,7 +111,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
         {/* Tech tags */}
         <div className="flex flex-wrap gap-3 mt-auto pt-6 border-t border-white/5">
           {project.technologies.map((tech: string) => (
-            <span key={tech} className={`${jetbrainsMono.className} px-4 py-1.5 text-xs font-semibold rounded-full bg-[#0a0a0a] text-[#a3a3a3] border border-white/5 group-hover:border-[#f59e0b]/30 group-hover:text-[#fafafa] transition-colors duration-300`}>
+            <span key={tech} className={`${jetbrainsMono.className} px-4 py-1.5 text-xs font-semibold rounded-none bg-[#0a0a0a] text-[#a3a3a3] border border-white/5 group-hover:border-[#f59e0b]/30 group-hover:text-[#fafafa] transition-colors duration-300`}>
               {tech}
             </span>
           ))}

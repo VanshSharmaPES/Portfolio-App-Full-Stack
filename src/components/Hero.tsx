@@ -200,7 +200,7 @@ export default function Hero() {
                     href={`https://github.com/${PORTFOLIO_DATA.contact.github}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative overflow-hidden group inline-flex items-center justify-center p-4 border border-white/10 rounded-full bg-transparent hover:border-[#f59e0b]/30 transition-all duration-300"
+                    className="relative overflow-hidden group inline-flex items-center justify-center p-4 border border-white/10 rounded-none bg-transparent hover:border-[#f59e0b]/30 transition-all duration-300"
                   >
                     <Github className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 relative z-10 text-[#a3a3a3] group-hover:text-[#fafafa]" />
                     <div className="absolute inset-0 h-full w-full bg-white/5 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
@@ -212,7 +212,7 @@ export default function Hero() {
                     href={`https://linkedin.com/in/${PORTFOLIO_DATA.contact.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative overflow-hidden group inline-flex items-center justify-center p-4 border border-white/10 rounded-full bg-transparent hover:border-[#f59e0b]/30 transition-all duration-300"
+                    className="relative overflow-hidden group inline-flex items-center justify-center p-4 border border-white/10 rounded-none bg-transparent hover:border-[#f59e0b]/30 transition-all duration-300"
                   >
                     <Linkedin className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 relative z-10 text-[#a3a3a3] group-hover:text-[#fafafa]" />
                     <div className="absolute inset-0 h-full w-full bg-white/5 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />

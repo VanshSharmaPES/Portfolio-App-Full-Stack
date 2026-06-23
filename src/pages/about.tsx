@@ -95,14 +95,14 @@ export default function About() {
                       }`}
                   >
                     {/* Timeline Dot */}
-                    <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-[#0a0a0a] border-4 border-[#f59e0b] shadow-[0_0_15px_rgba(245,158,11,0.5)] -translate-x-1/2 z-10" />
+                    <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-none bg-[#0a0a0a] border-4 border-[#f59e0b] shadow-[0_0_15px_rgba(245,158,11,0.5)] -translate-x-1/2 z-10" />
 
                     {/* Empty Space for offset */}
                     <div className="hidden md:block w-1/2" />
 
                     {/* Card */}
                     <div className={`w-full md:w-1/2 pl-8 md:pl-0 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12 text-left"}`}>
-                      <div className="p-6 md:p-8 rounded-2xl bg-[#171717]/80 border border-white/5 hover:border-[#f59e0b]/30 transition-colors duration-300 group">
+                      <div className="p-6 md:p-8 rounded-none bg-[#171717]/80 border border-white/5 hover:border-[#f59e0b]/30 transition-colors duration-300 group">
                         <span className={`${jetbrainsMono.className} text-xs font-bold text-[#f59e0b] tracking-wider mb-2 block opacity-80 group-hover:opacity-100 transition-opacity`}>
                           {item.year}
                         </span>
@@ -142,7 +142,7 @@ export default function About() {
                 <MotionDiv
                   key={skill}
                   whileHover={{ y: -5, scale: 1.05 }}
-                  className="px-6 py-4 rounded-xl bg-[#171717] border border-white/5 hover:border-[#f59e0b]/50 hover:bg-[#f59e0b]/10 transition-all duration-300 group cursor-default shadow-lg shadow-black/20"
+                  className="px-6 py-4 rounded-none bg-[#171717] border border-white/5 hover:border-[#f59e0b]/50 hover:bg-[#f59e0b]/10 transition-all duration-300 group cursor-default shadow-lg shadow-black/20"
                 >
                   <span className={`${jetbrainsMono.className} text-base font-semibold text-[#a3a3a3] group-hover:text-[#fafafa] transition-colors`}>
                     {skill}
@@ -160,7 +160,7 @@ export default function About() {
                 <MotionDiv
                   key={skill}
                   whileHover={{ y: -5, scale: 1.05 }}
-                  className="px-6 py-4 rounded-xl bg-[#171717] border border-white/5 hover:border-[#f59e0b]/50 hover:bg-[#f59e0b]/10 transition-all duration-300 group cursor-default shadow-lg shadow-black/20"
+                  className="px-6 py-4 rounded-none bg-[#171717] border border-white/5 hover:border-[#f59e0b]/50 hover:bg-[#f59e0b]/10 transition-all duration-300 group cursor-default shadow-lg shadow-black/20"
                 >
                   <span className={`${jetbrainsMono.className} text-base font-semibold text-[#a3a3a3] group-hover:text-[#fafafa] transition-colors`}>
                     {skill}
