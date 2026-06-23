@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Resend } from 'resend';
-import { supabase } from '@/lib/supabase';
+import { sql } from '@/lib/db';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -21,15 +21,20 @@ export default async function handler(
   }
 
   try {
-    // 1. Save to Supabase (PostgreSQL)
-    const { data: newMessage, error: supabaseError } = await supabase
-      .from('messages')
-      .insert([{ name, email, message }])
-      .select()
-      .single();
-
-    if (supabaseError) {
-      console.error('Supabase Insert Error:', supabaseError);
+    // 1. Save to Neon (PostgreSQL)
+    let newMessage;
+    try {
+      const results = await sql`
+        INSERT INTO messages (name, email, message)
+        VALUES (${name}, ${email}, ${message})
+        RETURNING *
+      `;
+      newMessage = results[0];
+      if (!newMessage) {
+        throw new Error('No record returned from database');
+      }
+    } catch (dbError: any) {
+      console.error('Neon DB Error:', dbError);
       return res.status(500).json({ success: false, message: 'Failed to save message to database.' });
     }
 
