@@ -1,20 +1,40 @@
 export const PORTFOLIO_DATA = {
   name: "Vansh Sharma",
-  title: "Full Stack + AI/ML Developer",
-  tagline: "Building scalable full-stack applications and AI-powered tools that solve real-world problems.",
-  about: "Hello! I'm Vansh Sharma, a Full Stack Developer currently pursuing my B.Tech in Computer Science (AI/ML) at PES University. My journey in tech is driven by a desire to solve real-world problems through code. I have developed robust applications like NovaLearn, a full-stack educational platform, and a Hospital Queue Management System to optimize patient flow. My technical toolkit includes React, Next.js, Node.js, and MongoDB, supported by a strong foundation in C and Python. I believe in the power of community and collaboration. I actively contribute as a Technical Member for the AIML domain at Nexus (AWS Champ Club) and handle operations for the Microsoft Learn Student Ambassadors at PESU. My role as a Senior Manager at AIESEC has further sharpened my leadership and organizational skills, allowing me to bridge the gap between technical execution and operational success.",
-  frontendSkills: ["C", "React", "TypeScript", "Tailwind CSS", "Next.js", "Node.js", "Express.js", "MongoDB", "Git"],
-  aiMlSkills: ["Python", "FastAPI", "Groq API", "scikit-learn", "SHAP"],
+  title: "Full Stack Developer & AI Engineer",
+  tagline: "I figure out what to build. Then I build it.",
+  about:
+    "I'm Vansh — a third-year CSE student specializing in AI/ML at PES University. I write code because of what happens after — when something I built actually makes someone's day easier, faster, or better. That's the part that keeps me going. Most of my work lives at the intersection of full-stack engineering and applied AI. I don't just train models or wire up frontends — I figure out what problem is worth solving, then build the whole thing. Right now I'm looking for opportunities where the work is real and the problems are hard.",
+  frontendSkills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+  aiMlSkills: ["Python", "FastAPI", "Flask", "Groq API", "scikit-learn", "SHAP", "OpenCV"],
   projects: [
-    { id: 1, title: "Hospital Queue Management System", description: "Developed a comprehensive queue management system for hospitals to handle patient flow based on priority (Severe, Moderate, Normal).", technologies: ["Data Structures in C"], link: "https://github.com/VanshSharmaPES/Hospital-Queue-Management-System" },
-    { id: 2, title: "ClearTriage", description: "An intelligent triage system that leverages AI to assist in prioritizing and categorizing patient cases for efficient healthcare delivery.", technologies: ["Python", "AI/ML", "FastAPI"], link: "https://github.com/VanshSharmaPES/ClearTriage" },
-    { id: 3, title: "Sanjeevani (AI HealthCare Assistant)", description: "Built an AI-powered healthcare assistant using Next.js, Tailwind CSS, Python, and Flask to analyze medicine strips and decipher handwritten prescriptions via the Groq API.", technologies: ["Next.js", "Flask", "Groq API", "Edge-TTS"], link: "https://github.com/VanshSharmaPES/Sanjeevani" },
-    { id: 4, title: "NovaLearn", description: "This project is a robust full-stack web application developed as part of the Web Technology curriculum. It is designed to facilitate online learning with a focus on modular architecture and type safety.", technologies: ["TypeScript", "ReactJS", "MongoDB", "NodeJS", "ExpressJS", "CSS"], link: "https://github.com/VanshSharmaPES/Web_Technology_Project" },
-    { id: 5, title: "Personal Portfolio", description: "A high-performance, responsive portfolio website built to showcase my projects and skills. Features smooth page transitions, strict type safety, and a modern dark-themed UI.", technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"], link: "https://github.com/VanshSharmaPES/portfolio-app-full-stack" },
+    {
+      id: 1,
+      title: "Sanjeevani",
+      description:
+        "Most people can't read their own prescriptions. They're dense, technical, and often in languages patients don't speak. Sanjeevani lets you scan a prescription and get a plain-language audio explanation — in 22 languages, in real time.",
+      technologies: ["Next.js", "Flask", "Groq API", "Edge-TTS", "Python"],
+      link: "https://github.com/VanshSharmaPES/Sanjeevani",
+    },
+    {
+      id: 2,
+      title: "ClearTriage",
+      description:
+        "Emergency rooms make life-or-death prioritization calls under pressure, often with no systematic support. ClearTriage is a real-time triage system that ranks patients by severity and shows why — using Explainable AI so doctors understand the reasoning, not just the output.",
+      technologies: ["React", "Node.js", "Express.js", "MongoDB", "Python", "SHAP"],
+      link: "https://github.com/VanshSharmaPES/ClearTriage",
+    },
+    {
+      id: 3,
+      title: "AlgoForge",
+      description:
+        "Learning algorithms from textbooks is abstract. Watching them run is different. AlgoForge is an interactive platform for visualizing data structures and algorithms in motion — built collaboratively with a team, currently in active development.",
+      technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Radix UI"],
+      link: "https://github.com/PurposeKnight/dsa-web-portal",
+    },
   ],
   contact: {
-    email: "vanshsharma2006asr@gmail.com",
+    email: "hello@vansharma.tech",
     github: "VanshSharmaPES",
     linkedin: "vansh-sharma-pesu",
-  }
+  },
 };
